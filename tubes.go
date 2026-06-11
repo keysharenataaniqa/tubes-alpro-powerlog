@@ -53,8 +53,13 @@ func tambahData(n *int) {
 	if *n < NMAX {
 		hasilPerangkat = "tidak_valid"
 		for hasilPerangkat == "tidak_valid" {
+			fmt.Println("\n  💡 Petunjuk: Jika ingin membatalkan, ketik '0' lalu tekan [Enter]")
 			fmt.Print("    🏷️  Masukkan Nama Perangkat : ")
 			data[*n].nama = bacaString()
+			if data[*n].nama == "0" {
+				fmt.Println("\n  🔙 Batal menambahkan data. Kembali ke Menu Utama...")
+				return
+			}
 			if cekString(data[*n].nama) {
 				hasilPerangkat = "valid"
 			} else {
@@ -141,18 +146,10 @@ func tambahData(n *int) {
 	}
 }
 func cekString(input string) bool {
-	var cekAngka bool
-	var i int
 	if input == "" || input == `""` || input == "''" || input == "-" || input == " " {
 		return false
 	}
-	cekAngka = true
-	for i = 0; i < len(input); i++ {
-		if input[i] >= '0' && input[i] <= '9' {
-			cekAngka = false
-		}
-	}
-	return cekAngka
+	return true
 }
 func tampilData(n int) {
 	var i int
@@ -210,6 +207,7 @@ func updateData(n int) {
 		}
 		fmt.Println("  └────┴──────────────────────┴─────────┴──────────┴──────────────────────┘")
 
+		fmt.Println("\n  💡 Petunjuk: Jika ingin membatalkan, ketik '0' lalu tekan [Enter]")
 		validFormat = false
 		for validFormat == false {
 			fmt.Print("  🔢 Masukkan nomor data yang diubah : ")
@@ -221,6 +219,10 @@ func updateData(n int) {
 			} else {
 				validFormat = true
 			}
+		}
+		if nData == 0 {
+			fmt.Println("\n  🔙 Batal mengubah data. Kembali ke Menu Utama...")
+			return
 		}
 		nData = nData - 1
 
@@ -345,6 +347,7 @@ func hapusData(n *int) {
 		}
 		fmt.Println("  └────┴──────────────────────┴─────────┴──────────┴──────────────────────┘")
 
+		fmt.Println("\n  💡 Petunjuk: Jika ingin membatalkan, ketik '0' lalu tekan [Enter]")
 		validFormat = false
 		for validFormat == false {
 			fmt.Print("  🔢 Masukkan nomor data yang dihapus : ")
@@ -356,6 +359,10 @@ func hapusData(n *int) {
 			} else {
 				validFormat = true
 			}
+		}
+		if nData == 0 {
+			fmt.Println("\n  🔙 Batal mengubah data. Kembali ke Menu Utama...")
+			return
 		}
 		nData = nData - 1
 
@@ -924,6 +931,7 @@ func main() {
 
 			validFormat = false
 			for validFormat == false {
+				fmt.Println("\n  💡 Petunjuk: Jika ingin membatalkan, ketik '0' lalu tekan [Enter]")
 				fmt.Print("\n  👉 Pilih metode pencarian: ")
 				sukses, _ = fmt.Scan(&pilih)
 				if sukses == 0 {
@@ -950,6 +958,7 @@ func main() {
 
 			validFormat = false
 			for validFormat == false {
+				fmt.Println("\n  💡 Petunjuk: Jika ingin membatalkan, ketik '0' lalu tekan [Enter]")
 				fmt.Print("\n  👉 Pilih metode pencarian: ")
 				sukses, _ = fmt.Scan(&pilih)
 				if sukses == 0 {
@@ -978,6 +987,7 @@ func main() {
 
 			validFormat = false
 			for validFormat == false {
+				fmt.Println("\n  💡 Petunjuk: Jika ingin membatalkan, ketik '0' lalu tekan [Enter]")
 				fmt.Print("\n  👉 Pilih metode sorting: ")
 				sukses, _ = fmt.Scan(&pilih)
 				if sukses == 0 {
@@ -1014,6 +1024,7 @@ func main() {
 
 			validFormat = false
 			for validFormat == false {
+				fmt.Println("\n  💡 Petunjuk: Jika ingin membatalkan, ketik '0' lalu tekan [Enter]")
 				fmt.Print("\n  👉 Pilih metode sorting: ")
 				sukses, _ = fmt.Scan(&pilih)
 				if sukses == 0 {
